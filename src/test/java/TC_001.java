@@ -10,7 +10,7 @@ public class TC_001 extends BaseSeleniumTest {
     public void HealthServiceTest() {
         driver.get("http://localhost:8080/");
         driver.findElement(By.linkText("Doctors")).click();
-        /*driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);*/
+        /*driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);DLACZEGO TU JEST TYLKO TEN TESTCASE*/
     }
 
 }
