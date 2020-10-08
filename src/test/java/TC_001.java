@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TC_001 extends BaseSeleniumTest {
 
-//
+
     @Test
     public void HealthServiceTest() {
         driver.get("http://localhost:8080/");
