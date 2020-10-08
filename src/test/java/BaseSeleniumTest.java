@@ -15,11 +15,13 @@ public abstract class BaseSeleniumTest {
         System.setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+
     }
 
     @AfterTest
-    public void teardown(){
+    public void teardown() throws InterruptedException {
         System.out.println("Ending the Test");
+        Thread.sleep(5000);
         driver.quit();
     }
 }
