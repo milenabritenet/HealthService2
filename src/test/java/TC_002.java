@@ -12,7 +12,7 @@ public class TC_002 extends BaseSeleniumTest{
     @FindBy(linkText = "Doctors")
     private WebElement doctorsBtn;
 
-
+//correct
     @Test
     public void HealthServiceTest() {
         driver.get("http://localhost:8080/");
