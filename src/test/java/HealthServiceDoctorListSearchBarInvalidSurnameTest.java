@@ -5,21 +5,29 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class TC_006 extends BaseSeleniumTest{
+
+public class HealthServiceDoctorListSearchBarInvalidSurnameTest extends BaseSeleniumTest{
     @FindBy(linkText = "Doctors")
     private WebElement doctorsBtn;
 
-    @FindBy(xpath = "/html/body/div/div/div/div/div/div/table/tbody/tr[1]/td[11]/a/i")
-    private WebElement infoBtn;
+    @FindBy(linkText = "Search")
+    private WebElement searchBtn;
+
+    @FindBy(id = "keyword")
+    private WebElement keyword;
+
+    @FindBy(xpath = "//input[@value='Search']")
+    private WebElement searchBtn2;
 
     @FindBy(tagName = "a")
     private WebElement homeBtn;
 
 
     @Test
-    public void HealthServiceTest() {
+    public void HealthServiceTest() throws IOException {
         driver.get("http://localhost:8080/");
         String expectedTitle = "Health Service";
         System.out.println(driver.getTitle());
@@ -30,10 +38,11 @@ public class TC_006 extends BaseSeleniumTest{
         String expectedTitle2 = "Doctors";
         System.out.println(driver.getTitle());
         Assert.assertEquals(driver.getTitle(),expectedTitle2);
-        infoBtn.click();
-        String expectedTitle3 = "Doctor";
-        Assert.assertEquals(driver.getTitle(),expectedTitle3);
+        searchBtn.click();
+        keyword.sendKeys("Gregory Duda");
+        searchBtn2.click();
+        Assert.assertEquals( driver.findElement(By.xpath("//tbody")).getText(),"");
+        SeleniumHelper.takeScreenshot(driver);
         homeBtn.click();
-
     }
 }

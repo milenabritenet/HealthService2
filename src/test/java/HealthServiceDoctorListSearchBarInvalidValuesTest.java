@@ -5,9 +5,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class TC_005 extends BaseSeleniumTest{
+public class HealthServiceDoctorListSearchBarInvalidValuesTest extends BaseSeleniumTest{
     @FindBy(linkText = "Doctors")
     private WebElement doctorsBtn;
 
@@ -23,11 +24,9 @@ public class TC_005 extends BaseSeleniumTest{
     @FindBy(tagName = "a")
     private WebElement homeBtn;
 
-    //Do poprawy
-
 
     @Test
-    public void HealthServiceTest() {
+    public void HealthServiceTest() throws IOException {
         driver.get("http://localhost:8080/");
         String expectedTitle = "Health Service";
         System.out.println(driver.getTitle());
@@ -38,14 +37,11 @@ public class TC_005 extends BaseSeleniumTest{
         String expectedTitle2 = "Doctors";
         System.out.println(driver.getTitle());
         Assert.assertEquals(driver.getTitle(),expectedTitle2);
-        PageFactory.initElements(driver,this);
         searchBtn.click();
-        PageFactory.initElements(driver,this);
         keyword.sendKeys("Jacek Sasin");
-        PageFactory.initElements(driver,this);
         searchBtn2.click();
-        Assert.assertEquals( driver.findElement(By.xpath("//tbody")).getText(),"");
-        PageFactory.initElements(driver,this);
+        Assert.assertEquals(driver.findElement(By.xpath("//tbody")).getText(),"");
+        SeleniumHelper.takeScreenshot(driver);
         homeBtn.click();
     }
 }

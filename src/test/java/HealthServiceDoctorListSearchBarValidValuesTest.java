@@ -5,9 +5,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
+import java.io.IOException;
 
-public class TC_003 extends BaseSeleniumTest{
+
+public class HealthServiceDoctorListSearchBarValidValuesTest extends BaseSeleniumTest{
     @FindBy(linkText = "Doctors")
     private WebElement doctorsBtn;
 
@@ -25,16 +26,14 @@ public class TC_003 extends BaseSeleniumTest{
 
 
     @Test
-    public void HealthServiceTest() {
+    public void HealthServiceTest() throws IOException {
         driver.get("http://localhost:8080/doctors/list");
         PageFactory.initElements(driver,this);
         searchBtn.click();
-        PageFactory.initElements(driver,this);
         keyword.sendKeys("Gregory House");
-        PageFactory.initElements(driver,this);
         searchBtn2.click();
         Assert.assertEquals( driver.findElement(By.xpath("//td")).getText(),"Gregory");
-        PageFactory.initElements(driver,this);
+        SeleniumHelper.takeScreenshot(driver);
         homeBtn.click();
     }
 }
