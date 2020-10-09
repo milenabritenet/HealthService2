@@ -94,7 +94,7 @@ public class HealthServiceAddDoctorInvalidLastNameTest extends BaseSeleniumTest{
 
         private void assertTrue(boolean contains) {
         }
-//to jest komentarz by sprawdzic czy webhook działa2
+//to jest komentarz by sprawdzic czy webhook działa
 
     }
 
